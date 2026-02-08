@@ -190,13 +190,17 @@
     width: 100%
     border-collapse: collapse
     border-spacing: 0
+    border-radius: 8px
+    background: var(--table-bg)
+    overflow: hidden;
+  tr:nth-child(even)
+    background-color: var(--table-row-deep)
   th
     font-weight: bold
-    border-bottom: 3px solid color-border
-    padding-bottom: 0.5em
+    padding: 0.5em 1em
+    background-color: var(--table-row-deep)
   td
-    border-bottom: 1px solid color-border
-    padding: 10px 0
+    padding: 0.5em 1em
   blockquote
     background: var(--blockquote-bg)
     padding: 0 24px
