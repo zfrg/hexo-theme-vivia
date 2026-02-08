@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     linkSelector: 'a[href^="/"], a[href^="' + window.location.origin + '"]:not([target="_blank"]):not([download]):not([href^="#"])', // 拦截规则与Fuwari一致
     plugins: [
       new SwupFadeTheme(), // 修正：无.default
+      new SwupPreloadPlugin(),
+      new SwupScriptsPlugin({ optin: true }),
       new SwupHeadPlugin({ persistAssets: true }),
       new SwupScrollPlugin({ // 修正：无.default，配置与Fuwari一致
         scrollTop: true,
@@ -55,15 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.remove('dark');
     }
     // 重新执行容器内的内联脚本（代码高亮、评论等，Hexo核心适配）
-    const scripts = document.querySelectorAll('#content-body script');
+    /* const scripts = document.querySelectorAll('#content-body script');
     scripts.forEach(script => {
-      const newScript = document.createElement('script');
-      Object.assign(newScript, {
-        src: script.src,
-        type: script.type,
-        textContent: script.textContent
-      });
+      // const newScript = document.createElement('script');
+      // Object.assign(newScript, {
+      //   src: script.src,
+      //   type: script.type,
+      //   textContent: script.textContent
+      const newScript = script.cloneNode(true);
       script.parentNode.replaceChild(newScript, script);
-    });
+    }); */
   });
 });
