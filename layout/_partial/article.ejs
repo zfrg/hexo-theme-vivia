@@ -85,89 +85,91 @@
   </script>
 <% } %>
 
-<% if (!index && theme.comment.twikoo && theme.comment.twikoo.enable) { %>
-  <script src="https://cdn.staticfile.org/twikoo/1.6.26/twikoo.all.min.js"></script>
-  <div id="comment-card" class="comment-card">
-    <div class="main-title-bar">
-      <div class="main-title-dot"></div>
-      <div class="main-title"><%= __('comment') %> </div>
+<% if (page.comments){ %>
+  <% if (!index && theme.comment.twikoo && theme.comment.twikoo.enable) { %>
+    <script src="https://cdn.staticfile.org/twikoo/1.6.26/twikoo.all.min.js"></script>
+    <div id="comment-card" class="comment-card">
+      <div class="main-title-bar">
+        <div class="main-title-dot"></div>
+        <div class="main-title"><%= __('comment') %> </div>
+      </div>
+      <div id="tcomment"></div>
     </div>
-    <div id="tcomment"></div>
-  </div>
-  <script>
-      twikoo.init({
-          envId: '<%- theme.comment.twikoo.envID %>',
-          el: '#tcomment',
-          region: '<%- theme.comment.twikoo.region %>',
-          path: '<%- theme.comment.twikoo.path %>',
-          lang: '<%- theme.comment.twikoo.lang %>',
-      })
-  </script>
-<% } %>
+    <script>
+        twikoo.init({
+            envId: '<%- theme.comment.twikoo.envID %>',
+            el: '#tcomment',
+            region: '<%- theme.comment.twikoo.region %>',
+            path: '<%- theme.comment.twikoo.path %>',
+            lang: '<%- theme.comment.twikoo.lang %>',
+        })
+    </script>
+  <% } %>
 
-<% if (!index && theme.comment.waline && theme.comment.waline.enable) { %>
-  <div id="wl-comment-card" class="wl-comment-card">
-    <div class="main-title-bar">
-      <div class="main-title-dot"></div>
-      <div class="main-title"><%= __('comment') %> </div>
+  <% if (!index && theme.comment.waline && theme.comment.waline.enable) { %>
+    <div id="wl-comment-card" class="wl-comment-card">
+      <div class="main-title-bar">
+        <div class="main-title-dot"></div>
+        <div class="main-title"><%= __('comment') %> </div>
+      </div>
+      <div id="waline"></div>
     </div>
-    <div id="waline"></div>
-  </div>
-  <script type="module">
-    import { init } from 'https://cdn.staticfile.net/waline/3.0.0-alpha.9/waline.js';
+    <script type="module">
+      import { init } from 'https://cdn.staticfile.net/waline/3.0.0-alpha.9/waline.js';
 
-    init({
-      el: '#waline',
-      serverURL: '<%- theme.comment.waline.serverURL %>',
-      dark: 'html[theme="dark"]',
-    });
-  </script>
-<% } %>
+      init({
+        el: '#waline',
+        serverURL: '<%- theme.comment.waline.serverURL %>',
+        dark: 'html[theme="dark"]',
+      });
+    </script>
+  <% } %>
 
-<% if (!index && theme.comment.giscus && theme.comment.giscus.enable) { %>
-  <div id="comment-card" class="comment-card" style="padding-bottom: 40px;">
-    <div class="main-title-bar">
-      <div class="main-title-dot"></div>
-      <div class="main-title"><%= __('comment') %> </div>
+  <% if (!index && theme.comment.giscus && theme.comment.giscus.enable) { %>
+    <div id="comment-card" class="comment-card" style="padding-bottom: 40px;">
+      <div class="main-title-bar">
+        <div class="main-title-dot"></div>
+        <div class="main-title"><%= __('comment') %> </div>
+      </div>
+      <div class="giscus"></div>
     </div>
-    <div class="giscus"></div>
-  </div>
-  <% if (theme.comment.giscus.mapping === 'specific' || theme.comment.giscus.mapping === 'number') { %>
-    <script src="https://giscus.app/client.js"
-      data-repo="<%= theme.comment.giscus.repo %>"
-      data-repo-id="<%= theme.comment.giscus.repoID %>"
-      data-category="<%= theme.comment.giscus.category %>"
-      data-category-id="<%= theme.comment.giscus.categoryID %>"
-      data-mapping="<%= theme.comment.giscus.mapping %>"
-      data-term="<%= theme.comment.giscus.term %>"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="preferred_color_scheme"
-      data-lang="en"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      data-swup-reload-script
-      async  
-    ></script>
-  <% } else { %>
-    <script src="https://giscus.app/client.js"
-      data-repo="<%= theme.comment.giscus.repo %>"
-      data-repo-id="<%= theme.comment.giscus.repoID %>"
-      data-category="<%= theme.comment.giscus.category %>"
-      data-category-id="<%= theme.comment.giscus.categoryID %>"
-      data-mapping="<%= theme.comment.giscus.mapping %>"
-      data-strict="<%= theme.comment.giscus.strict ? 1 : 0 %>"
-      data-reactions-enabled="<%= theme.comment.giscus.reactions === false ? 0 : 1 %>"
-      data-emit-metadata="<%= theme.comment.giscus.metadata ? 1 : 0 %>"
-      data-input-position="top"
-      data-theme="<%= theme.comment.giscus.theme %>"
-      data-lang="<%= theme.comment.giscus.lang %>"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      data-swup-reload-script
-      async  
-    ></script>
+    <% if (theme.comment.giscus.mapping === 'specific' || theme.comment.giscus.mapping === 'number') { %>
+      <script src="https://giscus.app/client.js"
+        data-repo="<%= theme.comment.giscus.repo %>"
+        data-repo-id="<%= theme.comment.giscus.repoID %>"
+        data-category="<%= theme.comment.giscus.category %>"
+        data-category-id="<%= theme.comment.giscus.categoryID %>"
+        data-mapping="<%= theme.comment.giscus.mapping %>"
+        data-term="<%= theme.comment.giscus.term %>"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        data-swup-reload-script
+        async  
+      ></script>
+    <% } else { %>
+      <script src="https://giscus.app/client.js"
+        data-repo="<%= theme.comment.giscus.repo %>"
+        data-repo-id="<%= theme.comment.giscus.repoID %>"
+        data-category="<%= theme.comment.giscus.category %>"
+        data-category-id="<%= theme.comment.giscus.categoryID %>"
+        data-mapping="<%= theme.comment.giscus.mapping %>"
+        data-strict="<%= theme.comment.giscus.strict ? 1 : 0 %>"
+        data-reactions-enabled="<%= theme.comment.giscus.reactions === false ? 0 : 1 %>"
+        data-emit-metadata="<%= theme.comment.giscus.metadata ? 1 : 0 %>"
+        data-input-position="top"
+        data-theme="<%= theme.comment.giscus.theme %>"
+        data-lang="<%= theme.comment.giscus.lang %>"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        data-swup-reload-script
+        async  
+      ></script>
+    <% } %>
   <% } %>
 <% } %>
