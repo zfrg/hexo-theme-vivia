@@ -1,3 +1,10 @@
+加了一点来自 Astro 版本的小功能，比如 Swup.JS 实现的仿 SPA 效果
+
+> [!NOTE]
+> This project is no longer actively maintained. If you are interested in this theme, it is recommended to use [the new Astro version](https://github.com/saicaca/fuwari).
+> 
+> 本项目复刻版本也已不再活跃维护，若对本主题感兴趣，建议使用[新的 Astro 版本](https://github.com/saicaca/fuwari)
+
 > [!NOTE]
 > This project is no longer actively maintained. If you are interested in this theme, it is recommended to use [the new Astro version](https://github.com/saicaca/fuwari).
 > 
